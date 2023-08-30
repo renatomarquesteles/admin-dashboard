@@ -30,7 +30,7 @@ export default function RootLayout({
           <Box display="flex" height="100%">
             <SideBar />
 
-            <Box>
+            <Box width="100%">
               <TopBar />
               {children}
             </Box>
