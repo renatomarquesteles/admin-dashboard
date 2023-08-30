@@ -2,8 +2,11 @@ import '@/styles/global.css'
 
 import type { Metadata } from 'next'
 import { Source_Sans_3 } from 'next/font/google'
+import { Box } from '@mui/material'
+
 import { TopBar } from './top-bar'
 import { ThemeProviders } from './theme-providers'
+import { SideBar } from './side-bar'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard',
@@ -24,8 +27,14 @@ export default function RootLayout({
     <html lang="en" className={sourceSans3.className}>
       <body>
         <ThemeProviders>
-          <TopBar />
-          {children}
+          <Box display="flex" height="100%">
+            <SideBar />
+
+            <Box>
+              <TopBar />
+              {children}
+            </Box>
+          </Box>
         </ThemeProviders>
       </body>
     </html>
