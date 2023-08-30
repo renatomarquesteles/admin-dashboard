@@ -1,8 +1,17 @@
+import '@/styles/global.css'
+
 import type { Metadata } from 'next'
+import { Source_Sans_3 } from 'next/font/google'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard',
 }
+
+const sourceSans3 = Source_Sans_3({
+  weight: ['400', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export default function RootLayout({
   children,
@@ -10,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={sourceSans3.className}>
       <body>{children}</body>
     </html>
   )
