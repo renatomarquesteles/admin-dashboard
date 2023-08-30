@@ -32,5 +32,8 @@
     "react-pro-sidebar": "^1.1.0-alpha.1",
     "typescript": "5.2.2",
     "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.1.0"
   }
 }
