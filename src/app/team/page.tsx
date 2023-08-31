@@ -15,7 +15,7 @@ export default function Team() {
   const colors = tokens(theme.palette.mode)
 
   const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', maxWidth: 20 },
+    { field: 'id', headerName: 'ID', maxWidth: 86 },
     {
       field: 'name',
       headerName: 'Name',
@@ -28,7 +28,7 @@ export default function Team() {
       type: 'number',
       headerAlign: 'left',
       align: 'left',
-      maxWidth: 20,
+      maxWidth: 86,
     },
     {
       field: 'phone',
