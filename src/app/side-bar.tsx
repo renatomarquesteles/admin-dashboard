@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react'
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
+import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
@@ -34,16 +34,17 @@ function Item({ title, to, icon, selected, setSelected }: ItemProps) {
   const colors = tokens(theme.palette.mode)
 
   return (
-    <MenuItem
-      active={selected === title}
-      style={{ color: colors.grey[100] }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-      component="div"
-    >
-      <Typography>{title}</Typography>
-      <Link href={to} />
-    </MenuItem>
+    <Link href={to} style={{ textDecoration: 'none' }}>
+      <MenuItem
+        active={selected === title}
+        style={{ color: colors.grey[100] }}
+        onClick={() => setSelected(title)}
+        icon={icon}
+        component="div"
+      >
+        <Typography>{title}</Typography>
+      </MenuItem>
+    </Link>
   )
 }
 
