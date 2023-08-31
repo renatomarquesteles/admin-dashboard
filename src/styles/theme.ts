@@ -133,7 +133,7 @@ export function themeSettings(mode: ThemeMode) {
       ...(mode === 'dark'
         ? {
             primary: {
-              main: colors.primary[500],
+              main: colors.greenAccent[500],
             },
             secondary: {
               main: colors.greenAccent[500],
@@ -149,7 +149,7 @@ export function themeSettings(mode: ThemeMode) {
           }
         : {
             primary: {
-              main: colors.primary[100],
+              main: colors.primary[600],
             },
             secondary: {
               main: colors.greenAccent[500],
