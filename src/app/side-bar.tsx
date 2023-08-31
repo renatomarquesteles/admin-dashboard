@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Dispatch, ReactNode, SetStateAction, useState } from 'react'
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
@@ -36,9 +37,9 @@ function Item({ title, to, icon, selected, setSelected }: ItemProps) {
   return (
     <Link href={to} style={{ textDecoration: 'none' }}>
       <MenuItem
-        active={selected === title}
+        active={selected === to}
         style={{ color: colors.grey[100] }}
-        onClick={() => setSelected(title)}
+        onClick={() => setSelected(to)}
         icon={icon}
         component="div"
       >
@@ -51,8 +52,9 @@ function Item({ title, to, icon, selected, setSelected }: ItemProps) {
 export function SideBar() {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+  const pathname = usePathname()
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [selected, setSelected] = useState('Dashboard')
+  const [selected, setSelected] = useState(pathname)
 
   return (
     <Box
