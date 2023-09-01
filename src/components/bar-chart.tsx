@@ -1,6 +1,7 @@
 'use client'
 
-import { useMediaQuery, useTheme } from '@mui/material'
+import { useTheme } from '@mui/material'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import { ResponsiveBar } from '@nivo/bar'
 
 import { mockBarData } from '@/data/mockData'
