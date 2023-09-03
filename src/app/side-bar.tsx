@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, ReactNode, SetStateAction, useState } from 'react'
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
@@ -82,7 +82,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
         collapsed={isCollapsed}
         style={{ height: '100%' }}
         toggled={toggled}
-        breakPoint="md"
+        breakPoint={typeof window !== 'undefined' ? 'md' : undefined}
         onBackdropClick={hideSideBar}
       >
         <Menu>
