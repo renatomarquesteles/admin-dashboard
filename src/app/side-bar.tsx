@@ -48,16 +48,17 @@ function Item({ title, to, icon, selected, setSelected }: ItemProps) {
   )
 }
 
-export function SideBar() {
+interface SideBarProps {
+  toggled: boolean
+  hideSideBar: () => void
+}
+
+export function SideBar({ toggled, hideSideBar }: SideBarProps) {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const pathname = usePathname()
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [selected, setSelected] = useState(pathname)
-
-  useEffect(() => {
-    setIsCollapsed(window.innerWidth < 600)
-  }, [])
 
   return (
     <Box
@@ -77,7 +78,13 @@ export function SideBar() {
         },
       }}
     >
-      <Sidebar collapsed={isCollapsed} style={{ height: '100%' }}>
+      <Sidebar
+        collapsed={isCollapsed}
+        style={{ height: '100%' }}
+        toggled={toggled}
+        breakPoint="md"
+        onBackdropClick={hideSideBar}
+      >
         <Menu>
           {/* LOGO AND MENU ICON */}
           <MenuItem
