@@ -18,6 +18,7 @@ export default function Contacts() {
       field: 'name',
       headerName: 'Name',
       flex: 1,
+      minWidth: 150,
       cellClassName: 'name-column-cell',
     },
     {
@@ -34,8 +35,8 @@ export default function Contacts() {
       headerAlign: 'left',
       align: 'left',
     },
-    { field: 'email', headerName: 'Email', flex: 1 },
-    { field: 'address', headerName: 'Address', flex: 1 },
+    { field: 'email', headerName: 'Email', flex: 1, minWidth: 200 },
+    { field: 'address', headerName: 'Address', flex: 1, minWidth: 150 },
     { field: 'city', headerName: 'City' },
     { field: 'zipCode', headerName: 'ZipCode' },
   ]

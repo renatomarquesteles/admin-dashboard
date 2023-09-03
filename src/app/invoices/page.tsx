@@ -17,6 +17,7 @@ export default function Invoices() {
       field: 'name',
       headerName: 'Name',
       flex: 1,
+      minWidth: 150,
       cellClassName: 'name-column-cell',
     },
     {
@@ -25,11 +26,12 @@ export default function Invoices() {
       headerAlign: 'left',
       align: 'left',
     },
-    { field: 'email', headerName: 'Email', flex: 1 },
+    { field: 'email', headerName: 'Email', flex: 1, minWidth: 200 },
     {
       field: 'cost',
       headerName: 'Cost',
       flex: 1,
+      minWidth: 100,
       renderCell: (params) => (
         <Typography color={colors.greenAccent[500]}>
           ${params.row.cost}

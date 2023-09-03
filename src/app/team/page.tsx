@@ -20,6 +20,7 @@ export default function Team() {
       field: 'name',
       headerName: 'Name',
       flex: 1,
+      minWidth: 150,
       cellClassName: 'name-column-cell',
     },
     {
@@ -36,12 +37,13 @@ export default function Team() {
       headerAlign: 'left',
       align: 'left',
     },
-    { field: 'email', headerName: 'Email', flex: 1 },
+    { field: 'email', headerName: 'Email', flex: 1, minWidth: 200 },
     {
       field: 'access',
       headerName: 'Access Level',
       headerAlign: 'center',
       flex: 1,
+      minWidth: 200,
       renderCell: ({ row: { access } }: GridRenderCellParams) => {
         return (
           <Box
