@@ -128,7 +128,7 @@ export function SideBar() {
                   Renato M.
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  CEO Admin
+                  CTO Admin
                 </Typography>
               </Box>
             </Box>

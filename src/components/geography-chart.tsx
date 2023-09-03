@@ -13,7 +13,7 @@ export function GeographyChart({ isDashboard = false }) {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
   const isNonMobile = useMediaQuery('(min-width:600px)')
-  const [projectionScale, setProjectionScale] = useState(40)
+  const [projectionScale, setProjectionScale] = useState(60)
 
   useEffect(() => {
     if (!isDashboard && isNonMobile) {
