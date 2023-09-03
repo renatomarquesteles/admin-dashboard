@@ -29,7 +29,7 @@ export function GeographyChart({ isDashboard = false }) {
 
   const margin = isNonMobile
     ? { top: 0, right: 0, bottom: 0, left: 0 }
-    : { top: -120, right: 0, bottom: 0, left: 0 }
+    : { top: isDashboard ? 0 : -120, right: 0, bottom: 0, left: 0 }
 
   return (
     <ResponsiveChoropleth

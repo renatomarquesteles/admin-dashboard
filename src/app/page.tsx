@@ -1,6 +1,7 @@
 'use client'
 
 import { Box, Button, IconButton, Typography, useTheme } from '@mui/material'
+import useMediaQuery from '@mui/material/useMediaQuery'
 import DownloadOutlinedIcon from '@mui/icons-material/DownloadOutlined'
 import EmailIcon from '@mui/icons-material/Email'
 import PointOfSaleIcon from '@mui/icons-material/PointOfSale'
@@ -19,11 +20,24 @@ import { ProgressCircle } from '@/components/progress-circle'
 export default function Dashboard() {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+  const isNonMobile = useMediaQuery('(min-width:600px)')
 
   return (
     <Box component="main" m="20px">
       {/* HEADER */}
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{
+          '@media (max-width: 600px)': {
+            flexDirection: 'column',
+            justifyContent: 'center',
+            textAlign: 'center',
+            pb: '20px',
+          },
+        }}
+      >
         <Header title="Dashboard" subtitle="Welcome to your dashboard." />
 
         <Box>
@@ -51,7 +65,7 @@ export default function Dashboard() {
       >
         {/* ROW 1 */}
         <Box
-          gridColumn="span 3"
+          gridColumn={isNonMobile ? 'span 3' : 'span 12'}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -70,7 +84,7 @@ export default function Dashboard() {
           />
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn={isNonMobile ? 'span 3' : 'span 12'}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -89,7 +103,7 @@ export default function Dashboard() {
           />
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn={isNonMobile ? 'span 3' : 'span 12'}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -108,7 +122,7 @@ export default function Dashboard() {
           />
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn={isNonMobile ? 'span 3' : 'span 12'}
           display="flex"
           alignItems="center"
           justifyContent="center"
@@ -129,7 +143,7 @@ export default function Dashboard() {
 
         {/* ROW 2 */}
         <Box
-          gridColumn="span 8"
+          gridColumn={isNonMobile ? 'span 8' : 'span 12'}
           gridRow="span 2"
           sx={{ backgroundColor: colors.primary[400] }}
         >
@@ -173,7 +187,7 @@ export default function Dashboard() {
 
         {/* TRANSACTIONS */}
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? 'span 4' : 'span 12'}
           gridRow="span 2"
           overflow="auto"
           sx={{ backgroundColor: colors.primary[400] }}
@@ -225,7 +239,7 @@ export default function Dashboard() {
 
         {/* ROW 3 */}
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? 'span 4' : 'span 12'}
           gridRow="span 2"
           p="30px"
           sx={{ backgroundColor: colors.primary[400] }}
@@ -251,7 +265,7 @@ export default function Dashboard() {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? 'span 4' : 'span 12'}
           gridRow="span 2"
           sx={{ backgroundColor: colors.primary[400] }}
         >
@@ -267,7 +281,7 @@ export default function Dashboard() {
           </Box>
         </Box>
         <Box
-          gridColumn="span 4"
+          gridColumn={isNonMobile ? 'span 4' : 'span 12'}
           gridRow="span 2"
           padding="30px"
           sx={{ backgroundColor: colors.primary[400] }}
