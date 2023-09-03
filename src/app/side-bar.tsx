@@ -27,18 +27,31 @@ interface ItemProps {
   icon: ReactNode
   selected: string
   setSelected: Dispatch<SetStateAction<string>>
+  hideSideBar: () => void
 }
 
-function Item({ title, to, icon, selected, setSelected }: ItemProps) {
+function Item({
+  title,
+  to,
+  icon,
+  selected,
+  setSelected,
+  hideSideBar,
+}: ItemProps) {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+
+  function handleClick() {
+    setSelected(to)
+    hideSideBar()
+  }
 
   return (
     <Link href={to} style={{ textDecoration: 'none' }}>
       <MenuItem
         active={selected === to}
         style={{ color: colors.grey[100] }}
-        onClick={() => setSelected(to)}
+        onClick={handleClick}
         icon={icon}
         component="div"
       >
@@ -149,6 +162,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
 
             <Typography
@@ -164,6 +178,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
             <Item
               title="Contacts Information"
@@ -171,6 +186,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
             <Item
               title="Invoices Balances"
@@ -178,6 +194,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
 
             <Typography
@@ -193,20 +210,15 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
-            {/* <Item
-              title="Calendar"
-              to="/calendar"
-              icon={<CalendarTodayOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            /> */}
             <Item
               title="FAQ Page"
               to="/faq"
               icon={<HelpOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
 
             <Typography
@@ -222,6 +234,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
             <Item
               title="Pie Chart"
@@ -229,6 +242,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<PieChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
             <Item
               title="Line Chart"
@@ -236,6 +250,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
             <Item
               title="Geography Chart"
@@ -243,6 +258,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              hideSideBar={hideSideBar}
             />
           </Box>
         </Menu>
