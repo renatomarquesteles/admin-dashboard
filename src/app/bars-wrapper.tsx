@@ -1,12 +1,17 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { ReactNode, useState } from 'react'
 import { Box, IconButton } from '@mui/material'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 
-import { SideBar } from './side-bar'
 import { TopBar } from './top-bar'
+
+const SideBar = dynamic<{ toggled: boolean; hideSideBar: () => void }>(
+  () => import('./side-bar').then((mod) => mod.SideBar),
+  { ssr: false },
+)
 
 interface BarsWrapperProps {
   children: ReactNode

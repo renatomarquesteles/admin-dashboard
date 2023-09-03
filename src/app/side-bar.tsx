@@ -82,7 +82,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
         collapsed={isCollapsed}
         style={{ height: '100%' }}
         toggled={toggled}
-        breakPoint={typeof window !== 'undefined' ? 'md' : undefined}
+        breakPoint="md"
         onBackdropClick={hideSideBar}
       >
         <Menu>
