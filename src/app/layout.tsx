@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Source_Sans_3 } from 'next/font/google'
 
 import { ThemeProviders } from './theme-providers'
-import { BarsWrapper } from './bars-wrapper'
+import { BarsWrapper } from './layout-bars/bars-wrapper'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard',

@@ -1,9 +1,7 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Dispatch, ReactNode, SetStateAction, useState } from 'react'
+import { useState } from 'react'
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
@@ -19,47 +17,8 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined'
 
 import { tokens } from '@/styles/theme'
-import profilePicture from '@/assets/pfp.png'
-
-interface ItemProps {
-  title: string
-  to: string
-  icon: ReactNode
-  selected: string
-  setSelected: Dispatch<SetStateAction<string>>
-  hideSideBar: () => void
-}
-
-function Item({
-  title,
-  to,
-  icon,
-  selected,
-  setSelected,
-  hideSideBar,
-}: ItemProps) {
-  const theme = useTheme()
-  const colors = tokens(theme.palette.mode)
-
-  function handleClick() {
-    setSelected(to)
-    hideSideBar()
-  }
-
-  return (
-    <Link href={to} style={{ textDecoration: 'none' }}>
-      <MenuItem
-        active={selected === to}
-        style={{ color: colors.grey[100] }}
-        onClick={handleClick}
-        icon={icon}
-        component="div"
-      >
-        <Typography>{title}</Typography>
-      </MenuItem>
-    </Link>
-  )
-}
+import { SideBarItem } from './item'
+import { UserInfo } from './user-info'
 
 interface SideBarProps {
   toggled: boolean
@@ -126,37 +85,11 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
           </MenuItem>
 
           {/* USER */}
-          {!isCollapsed && (
-            <Box mb="25px">
-              <Box display="flex" justifyContent="center" alignItems="center">
-                <Image
-                  src={profilePicture}
-                  alt="Profile picture"
-                  width={100}
-                  height={100}
-                  style={{ cursor: 'pointer', borderRadius: '50%' }}
-                />
-              </Box>
-
-              <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={colors.grey[100]}
-                  fontWeight="bold"
-                  sx={{ m: '10px 0 0 0' }}
-                >
-                  Renato M.
-                </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  CTO Admin
-                </Typography>
-              </Box>
-            </Box>
-          )}
+          {!isCollapsed && <UserInfo />}
 
           {/* MENU ITEMS */}
           <Box>
-            <Item
+            <SideBarItem
               title="Dashboard"
               to="/"
               icon={<HomeOutlinedIcon />}
@@ -172,7 +105,8 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
             >
               Data
             </Typography>
-            <Item
+
+            <SideBarItem
               title="Manage Team"
               to="/team"
               icon={<PeopleOutlinedIcon />}
@@ -180,7 +114,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               setSelected={setSelected}
               hideSideBar={hideSideBar}
             />
-            <Item
+            <SideBarItem
               title="Contacts Information"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
@@ -188,7 +122,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               setSelected={setSelected}
               hideSideBar={hideSideBar}
             />
-            <Item
+            <SideBarItem
               title="Invoices Balances"
               to="/invoices"
               icon={<ReceiptOutlinedIcon />}
@@ -204,7 +138,8 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
             >
               Pages
             </Typography>
-            <Item
+
+            <SideBarItem
               title="Profile Form"
               to="/form"
               icon={<PersonOutlinedIcon />}
@@ -212,7 +147,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               setSelected={setSelected}
               hideSideBar={hideSideBar}
             />
-            <Item
+            <SideBarItem
               title="FAQ Page"
               to="/faq"
               icon={<HelpOutlinedIcon />}
@@ -228,7 +163,8 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
             >
               Charts
             </Typography>
-            <Item
+
+            <SideBarItem
               title="Bar Chart"
               to="/bar"
               icon={<BarChartOutlinedIcon />}
@@ -236,7 +172,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               setSelected={setSelected}
               hideSideBar={hideSideBar}
             />
-            <Item
+            <SideBarItem
               title="Pie Chart"
               to="/pie"
               icon={<PieChartOutlinedIcon />}
@@ -244,7 +180,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               setSelected={setSelected}
               hideSideBar={hideSideBar}
             />
-            <Item
+            <SideBarItem
               title="Line Chart"
               to="/line"
               icon={<TimelineOutlinedIcon />}
@@ -252,7 +188,7 @@ export function SideBar({ toggled, hideSideBar }: SideBarProps) {
               setSelected={setSelected}
               hideSideBar={hideSideBar}
             />
-            <Item
+            <SideBarItem
               title="Geography Chart"
               to="/geography"
               icon={<MapOutlinedIcon />}
